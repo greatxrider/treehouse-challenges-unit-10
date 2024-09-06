@@ -6,20 +6,18 @@ const Nav = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <UserContext.Consumer>
-      <nav>
-        {
-          user ? (
-            <>
-              <Link to="/settings">Settings</Link>
-              <Link to="/signout">Sign Out</Link>
-            </>
-          ) : (
-            <Link className="signin" to="/signin">Sign In</Link>
-          )
-        }
-      </nav>
-    </UserContext.Consumer>
+    <nav>
+      {
+        user ? (
+          <>
+            <Link to="/settings">Settings</Link>
+            <Link to="/signout">Sign Out</Link>
+          </>
+        ) : (
+          <Link className="signin" to="/signin">Sign In</Link>
+        )
+      }
+    </nav>
   );
 }
 

@@ -43,7 +43,15 @@ function App() {
   }
 
   return (
-    <UserContext.Provider value={{ user }}>
+    <UserContext.Provider
+      value={{
+        user,
+        actions: {
+          signIn: signInUser,
+          signOut: signOutUser
+        }
+      }}
+    >
       <div>
         <Header
           user={user}
@@ -51,11 +59,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="signin" element={
-            <UserSignIn
-              signIn={signInUser}
-              accentColor={accentColor} />
-          } />
-          <Route path="signout" element={<UserSignOut signOut={signOutUser} />} />
+            <UserSignIn accentColor={accentColor} />} />
+          <Route path="signout" element={<UserSignOut />} />
           <Route path="settings" element={
             <Settings
               isDarkMode={isDarkMode}

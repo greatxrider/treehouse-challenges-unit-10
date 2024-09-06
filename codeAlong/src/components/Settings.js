@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-//Components
+// Components
 import DarkMode from "./themes/DarkMode";
 import AccentColor from "./themes/AccentColor";
 import FontSize from "./themes/FontSize";
@@ -16,7 +16,7 @@ function Settings(props) {
     if (user === null) {
       navigate('/signin', { replace: true });
     }
-  })
+  }, [user, navigate]);
 
   return (
     <div className="bounds">
