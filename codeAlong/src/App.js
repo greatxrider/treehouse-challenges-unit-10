@@ -11,20 +11,14 @@ import NotFound from "./components/NotFound";
 function App() {
   return (
     <div>
-      <Header accentColor={accentColor} />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="signin" element={
-          <UserSignIn accentColor={accentColor} />} />
+          <UserSignIn />} />
         <Route path="signout" element={<UserSignOut />} />
         <Route path="settings" element={
-          <Settings
-            isDarkMode={isDarkMode}
-            toggleDarkMode={toggleDarkMode}
-            accentColor={accentColor}
-            updateAccentColor={setAccentColor}
-            fontPercentage={fontPercentage}
-            updateFontPercentage={setFontPercentage} />
+          <Settings />
         } />
         <Route path="*" element={<NotFound />} />
       </Routes>

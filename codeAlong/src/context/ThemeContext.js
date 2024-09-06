@@ -22,8 +22,13 @@ export const ThemeProvider = (props) => {
 
     return (
         <ThemeContext.Provider value={{
-            accentColor, isDarkMode, fontPercentage, actions: {
-                
+            accentColor,
+            isDarkMode,
+            fontPercentage,
+            actions: {
+                toggleDarkMode,
+                updateAccentColor: setAccentColor,
+                updateFontPercentage: setFontPercentage
             }
         }}>
             {props.children}
