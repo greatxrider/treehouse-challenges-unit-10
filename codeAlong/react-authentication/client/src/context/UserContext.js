@@ -9,7 +9,7 @@ export const UserProvider = (props) => {
   }
 
   const signOut = () => {
-
+    
   }
 
   return (
