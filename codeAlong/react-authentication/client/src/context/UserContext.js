@@ -33,6 +33,7 @@ export const UserProvider = (props) => {
   const signOut = () => {
     setAuthUser(null);
     Cookies.remove("authenticatedUser");
+    Cookies.remove("defaultTheme");
   }
 
   return (
