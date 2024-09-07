@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import ThemeContext from '../context/ThemeContext';
 import UserContext from '../context/UserContext';
+import ErrorsDisplay from './ErrorsDisplay';
 
 const UserSignIn = () => {
   const { actions } = useContext(UserContext);
@@ -31,10 +32,12 @@ const UserSignIn = () => {
       const user = await actions.signIn(credentials);
       if (user) {
         navigate(from);
+      } else {
+        setErrors(["Sign-in was unsuccessful"]);
       }
     } catch (error) {
       setErrors(["Sign-in was unsuccessful"]);
-    };
+    }
   }
 
   const handleCancel = (event) => {
@@ -47,23 +50,16 @@ const UserSignIn = () => {
       <div className="grid-33 centered signin">
         <h1>Sign in</h1>
         <div>
-          {errors.length ? (
-            <div>
-              <h2 className="validation--errors--label">Validation errors</h2>
-              <div className="validation-errors">
-                <ul>
-                  {errors.map((error, i) => <li key={i}>{error}</li>)}
-                </ul>
-              </div>
-            </div>
-          ) : null}
+          <ErrorsDisplay errors={errors} />
           <form onSubmit={handleSubmit}>
+            <label htmlFor="username">User Name</label>
             <input
               id="username"
               name="username"
               type="text"
               ref={username}
               placeholder="User Name" />
+            <label htmlFor="password">Password</label>
             <input
               id="password"
               name="password"
